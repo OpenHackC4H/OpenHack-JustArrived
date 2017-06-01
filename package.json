@@ -1,0 +1,22 @@
+{
+  "name": "just-arrived",
+  "version": "0.0.0",
+  "description": "Our submission to OpenHack 2017 Just Arrived challenge.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Perpetual-Projects/OpenHack-JustArrived.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Martin Jirlow, Erik Westberg, Leo Ericson, Hampus Berndt",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Perpetual-Projects/OpenHack-JustArrived/issues"
+  },
+  "homepage": "https://github.com/Perpetual-Projects/OpenHack-JustArrived#readme"
+}
