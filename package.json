@@ -4,7 +4,7 @@
   "description": "Our submission to OpenHack 2017 Just Arrived challenge.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/Perpetual-Projects/OpenHack-JustArrived/issues"
   },
-  "homepage": "https://github.com/Perpetual-Projects/OpenHack-JustArrived#readme"
+  "homepage": "https://github.com/Perpetual-Projects/OpenHack-JustArrived#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongodb": "^2.2.27"
+  }
 }
