@@ -28,6 +28,7 @@ module.exports = function(passport) {
                     return done(null, false);
                 }
 
+                console.log("Sucessfully logged in " + username);
                 return done(null, user);
             });
     }));
