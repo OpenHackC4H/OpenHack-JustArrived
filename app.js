@@ -1,24 +1,26 @@
 var MongoClient = require('mongodb').MongoClient,
     assert = require('assert'),
-    express = require('express');
+    express = require('express'),
+    passport = require('passport'),
+    dbConfig = require('./database'),
+    mongoose = require('mongoose');
 
-//MongoDB URL (config option?)
-var url = 'mongodb://localhost:27017/openhack';
-
-var database = require('./database')(url);
-
-if (database !== null) {
-    console.log("Successfully connected to database!");
-}
+mongoose.connect(dbConfig.url);
 
 //Start ExpressJS initialization.
 const app = express();
 var port = 8080;
 
-app.get('/', function(req, res) {
-    res.send('Hello World!');
-});
+app.use(express.static('public'));
+app.use(require('cookie-parser')());
+app.use(require('body-parser')());
+app.use(require('express-session')({
+    secret: "rainbows are pretty"
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
+app.use('/', require('./routes/index'));
 
 app.listen(port, function() {
     console.log("Hello World listening on port " + port + "!");

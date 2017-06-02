@@ -4,7 +4,7 @@
   "description": "Our submission to OpenHack 2017 Just Arrived challenge.",
   "main": "app.js",
   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,13 @@
   },
   "homepage": "https://github.com/Perpetual-Projects/OpenHack-JustArrived#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
-    "mongodb": "^2.2.27"
+    "express-session": "^1.15.3",
+    "mongodb": "^2.2.27",
+    "mongoose": "^4.10.4",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   }
 }
