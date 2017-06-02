@@ -1,10 +1,27 @@
 var express = require('express');
 
-var router = new express.Router();
+var User = require('../models/user');
 
-router.get('/', function(req, res) {
+module.exports = function(passport) {
 
-    res.render("index");
-});
+    var router = new express.Router();
 
-module.exports = router;
+    router.get('/', function(req, res) {
+
+        res.render("index");
+    });
+
+    router.post('/login', function(req, res, next) {
+        passport.authenticate('login', function(err, account) {
+            console.log(err);
+            console.log(account);
+            res.redirect('/');
+        })(req, res, next);
+    });
+router.post('/signup', passport.authenticate('signup', {
+    successRedirect: '/',
+    failureRedirect: '/'
+}));
+
+return router;
+};
