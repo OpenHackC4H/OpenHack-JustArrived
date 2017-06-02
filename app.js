@@ -14,6 +14,9 @@ var port = 7425;
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
 app.use(express.static('public'));
 app.use(require('cookie-parser')());
 app.use(require('body-parser')());
