@@ -31,23 +31,23 @@
             <div class="guide-header"><%= fillOutYourGuide%></div>
             <form>
                 <div class="guide-row">
-                    <div>Was this your first job in Sweden?</div>
-                    <label class="alternative-radio">Yes<input type="radio" name="firstjob" value="yes"></input></label>
-                    <label class="alternative-radio">No<input type="radio" name="firstjob" value="no"></input></label>
+                    <div><%= wasThisYourFirstJobInSweden?%></div>
+                    <label class="alternative-radio"><%= yes%><input type="radio" name="firstjob" value="yes"></input></label>
+                    <label class="alternative-radio"><%= no%><input type="radio" name="firstjob" value="no"></input></label>
                 </div>
 
                 <div class="guide-row">
-                    <div>What kind of job is it?</div>
+                    <div><%= whatKindOfJobIsIt?%></div>
                     <div class="text-input-container"><input class="text-input" type="text"></input></div>
                 </div>
 
                 <div class="guide-row">
-                    <div>What education did you have?</div>
+                    <div><%= whatEducationDidYouHave?%></div>
                     <div class="text-input-container"><input class="text-input" type="text"></input></div>
                 </div>
 
                 <div class="guide-row">
-                    <div>Path</div>
+                    <div><%= path%></div>
                     <div class="path-step">
                         <div class="path-index">1.</div>
                         <div class="path-element">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="guide-row">
-                    <div>Description - preferably short</div>
+                    <div><%= descriptionPreferablyShort%></div>
                     <div class="text-input-container"><textarea class="path-header text-input"></textarea>
                 </div>
             </form>
