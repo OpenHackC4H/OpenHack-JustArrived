@@ -11,6 +11,9 @@ mongoose.connect(dbConfig.url);
 const app = express();
 var port = 8080;
 
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
 app.use(express.static('public'));
 app.use(require('cookie-parser')());
 app.use(require('body-parser')());
@@ -20,7 +23,10 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', require('./routes/index'));
+require('./passport/init')(passport);
+
+//Defining routes
+app.use('/', require('./routes/index')(passport));
 
 app.listen(port, function() {
     console.log("Hello World listening on port " + port + "!");

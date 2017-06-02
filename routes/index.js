@@ -1,10 +1,15 @@
 var express = require('express');
 
-var router = new express.Router();
+module.exports = function(passport) {
 
-router.get('/', function(req, res) {
+    var router = new express.Router();
 
-    res.render("index");
-});
+    router.get('/', function(req, res) {
 
-module.exports = router;
+        res.render("index");
+    });
+
+    router.post('/login', passport.authenticate('login'));
+
+    return router;
+};
