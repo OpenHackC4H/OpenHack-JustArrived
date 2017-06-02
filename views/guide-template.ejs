@@ -17,6 +17,8 @@
             .path-index{ min-width: 2rem; display: flex; justify-content: center; align-items: center; }
             .path-element{ flex-grow: 1; }
 
+            .text-input-container > textarea{ margin-bottom: -0.2rem; }
+
             .text-input-container{ padding: 0.2rem; border: black solid 0.1rem; border-radius: 0.3rem; background: #fafafa; }
             .text-input{ background: transparent; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; width: 100%; padding: 0; border: 0; margin: 0; resize: vertical;}
             .alternative-radio{ margin-left: 1rem; margin-right: 1rem; }
@@ -26,7 +28,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="guide-header">Fill out your guide</div>
+            <div class="guide-header"><%fillOutYourGuide%></div>
             <form>
                 <div class="guide-row">
                     <div>Was this your first job in Sweden?</div>
@@ -61,10 +63,10 @@
                 </div>
             </form>
         </div>
-        <div class="footer">Powered <span style="font-size: 0.8rem;">by</span>Perpetual Projects</div>
+        <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
         <script>
             function handlePathChange() {
-                alert("Don't do that!")
+                
             }
         </script>
     </body>
