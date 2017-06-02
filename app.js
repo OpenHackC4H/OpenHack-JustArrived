@@ -9,7 +9,7 @@ mongoose.connect(dbConfig.url);
 
 //Start ExpressJS initialization.
 const app = express();
-var port = 8080;
+var port = 7425;
 
 app.use(express.static('public'));
 app.use(require('cookie-parser')());

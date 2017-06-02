@@ -2,9 +2,10 @@ var express = require('express');
 
 var router = new express.Router();
 
-router.get('/', function(req, res) {
-
-    res.render("index");
+router.get('/:lang/', function(req, res) {
+    var lang = req.lang;
+    var json;
+    res.render("index", json);
 });
 
 module.exports = router;
