@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="guide-row">
-                    <div class="center-row input-instruction-text">Path</div>
+                    <div class="center-row input-instruction-text">How I did it</div>
                     <div class="path-step-container">
                         <!--<div class="path-step">
                             <div class="path-index">1.</div>
@@ -89,7 +89,7 @@
                 pathStep.className = "path-step";
                 var pathIndex = document.createElement("div");
                 pathIndex.className = "path-index";
-                var pathIndexText = document.createTextNode(lastStep + ".");
+                var pathIndexText = document.createTextNode(lastStep);
                 pathIndex.appendChild(pathIndexText);
                 var pathElement = document.createElement("div");
                 pathElement.className = "path-element";
@@ -135,10 +135,15 @@
             }
             function handlePathBlur(event) {
                 var row = event.target.parentElement.parentElement.parentElement;
+                var rows = row.parentElement.children;
                 if(isEmpty(row)) {
                     if(row != document.getElementsByClassName("path-step-container")[0].lastElementChild)
                     //delete it
                     row.parentElement.removeChild(row);
+                    lastStep--;
+                }
+                for(var i = 0; i < rows.length; i++) {
+                    rows[i].children[0].innerHTML = i + 1;
                 }
             }
             function isEmpty(step) {
