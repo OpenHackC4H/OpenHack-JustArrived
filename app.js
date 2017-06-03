@@ -23,7 +23,10 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', require('./routes/index'));
+require('./passport/init')(passport);
+
+//Defining routes
+app.use('/', require('./routes/index')(passport));
 
 app.listen(port, function() {
     console.log("Hello World listening on port " + port + "!");
