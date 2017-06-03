@@ -7,10 +7,12 @@
         <meta name="author" content="">
         <title>Perpetual Projects</title>
         <style>
-            body{ margin: 0; }
-            .container{ max-width: 60rem; padding: 1rem; }
+            body{ margin: 0; display: flex; justify-content: center; }
+            .container{ max-width: 40rem; padding: 1rem; }
             .guide-header{font-size: 1.5rem; text-align: center;}
             .guide-row{ padding: 1rem; }
+
+            .placeholder{ color: white; background: #00B568; padding: 0.5rem; max-width: 25rem; margin: 0 auto; margin-top: 2rem; }
 
             .path-step{ display: flex; border: black solid 0.1rem; padding: 0.5rem; border-radius: 0.6rem; margin-bottom: 1rem; }
             .path-step:last-child{ margin-bottom: 0; }
@@ -31,70 +33,88 @@
             .input-instruction-text{ margin: 0.3rem; }
 
             .center-row{ text-align: center; }
-            .footer{ text-align: center; margin: 1rem; }
+            .footer{ text-align: center; margin: 1rem; padding-bottom: 3rem; padding-top: 5rem; }
 
-            .experience-container{ border: solid black 1px; }
-            .short-info-container{ color: black; background: #d8d8d8; }
-            .first-job-display{ color: white; background: linear-gradient(to right, transparent, green, transparent); }
-            .short-info{ display: flex; justify-content: space-around; }
+            .experience-container{ flex-grow: 1;  margin: 1rem; background-color: #fafafa; min-width: 15rem;  max-width: 40rem; box-shadow: 0.2rem 0.2rem 0.7rem #b0b0b0; }
+            .short-info-container{ color: black; padding: 0.5rem; }
+            .first-job-display{ color: white; background: linear-gradient(to right, transparent, #00B568, transparent); }
+            .short-info-horizontal{ display: flex; justify-content: center; }
+            .short-info{ width: 50%; }
 
-            .bullet-container{  }
-            .bullet-row{ display: flex; background: #f0f0f0; padding: 0.5rem; padding-left: 2rem; padding-right: 2rem; }
-            .bullet-row:hover{ background: #d0d0d0; }
-            .bullet-title-description-container{ flex-grow: 1; }
-            .bullet-index{ min-width: 2rem; display: flex; justify-content: center; align-items: center; }
+            .bullet-container{ max-width: 25rem; margin: 0 auto; }
+            .bullet-row{ display: flex; padding: 0.5rem; padding-left: 2rem; padding-right: 2rem; }
+            .bullet-row:hover{ background: #f5f5f5; }
+            .bullet-title-description-container{ padding-left: 0.5rem; flex-grow: 1; }
+            .bullet-title{ font-weight: bold; }
+            .bullet-index{ min-width: 2rem; display: flex; justify-content: center; align-items: center; border-right: lightgray solid 0.2rem;}
+            .short-info-left{ text-align: right; border-right: solid lightgray 0.1rem; padding-right: 0.5rem; }
+            .short-info-right{ text-align: left; border-left: solid lightgray 0.1rem; padding-left: 0.5rem; }
 
-            .description-container{ background: #d8d8d8; padding: 0.5rem; }
-            .button-panel{ padding: 1rem; background: #d8d8d8; display: flex; justify-content: space-around; }
-            .button{ padding: 0.3rem; color: white; border: black solid 0; background-color: gray; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; }
+            .description-container{ padding: 0.5rem; max-width: 25rem; margin: 0 auto; }
+            .button-panel{ padding: 0.5rem; max-width: 25rem; margin: 0 auto; }
+            .horizontal-buttons{ display: flex; justify-content: space-between; }
+            .button{ width: 10rem; padding: 0.3rem; color: white; border: black solid 0; background-color: gray; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; }
             
-            .upvote-button{ background-color: green; }
-            .downvote-button{ background-color: orange; margin-right: 0.3rem; margin-left: 0.3rem; }
-            .flag-button{ background-color: blue; }
+            .upvote-button{ background-color: #009052; }
+            .downvote-button{ background-color: #ffb366; margin-right: 0.3rem; margin-left: 0.3rem; }
+            .flag-button{ background-color: #8080ff; }
+            .translate-button{ background-color: #00B568; margin-top: 1rem; display: block; width: 100%; }
 
         
         </style>
     </head>
     <body>
         <div class="experience-container">
-                <div class="short-info-container">
-                    <!--<%if(isFirstJob) {%>-->
-                        <div class="center-row first-job-display"><%= isFirstJob%></div>
-                    <!--<% }%>-->
-                    <div class="short-info"><div><%= previousEducation%></div><div><%= previousEducationInput%></div></div>
-                    <div class="short-info"><div><%= jobType%></div><div><%= jobTypeInput%></div></div>
+            <div class="">
+                <div class="placeholder">placeholder</div>
+            </div>
+            <div class="short-info-container">
+                <!--<%if(isFirstJob) {%>
+                    <div class="center-row first-job-display">First job</div>
+                <% }%>-->
+                <div class="short-info-horizontal">
+                    <div class="short-info">
+                        <div class="short-info-left">First job</div>
+                        <div class="short-info-left">Education</div>
+                        <div class="short-info-left">Job branch</div>
+                    </div>
+                    <div class="short-info">
+                        <div class="short-info-right">Yes</div>
+                        <div class="short-info-right">Computer Science</div>
+                        <div class="short-info-right">Programming</div>
+                    </div>
                 </div>
+            </div>
+            <div class="bullet-container">
+                <div class="bullet-row">
+                    <div class="bullet-index">1</div>
+                    <div class="bullet-title-description-container">
+                        <div class="bullet-title">CV</div>
+                        <div class="bullet-description">Jag skrev någonting på ett papper sdfklgjhsdf dlskfgj sdflkghsdfg dsfgkhsdf </div>
+                    </div>
+                </div>
+                <div class="bullet-row">
+                    <div class="bullet-index">2</div>
+                    <div class="bullet-title-description-container">
+                        <div class="bullet-title">Arbetsförmedlingen</div>
+                        <div class="bullet-description">Jag gick till arbetsförmedlingen sdfgklhsdflkgh sdflg ksdhfglkdsf glksdfg</div>
+                    </div>
+                </div>
+            </div>
 
-                <div class="bullet-container">
-                    <div class="bullet-row">
-                        <div class="bullet-index">1</div>
-                        <div class="bullet-title-description-container">
-                            <div class="bullet-title">CV</div>
-                            <div class="bullet-description">Jag skrev någonting på ett papper</div>
-                        </div>
-                    </div>
-                    <div class="bullet-row">
-                        <div class="bullet-index">2</div>
-                        <div class="bullet-title-description-container">
-                            <div class="bullet-title">Arbetsförmedlingen</div>
-                            <div class="bullet-description">Jag gick till arbetsförmedlingen</div>
-                        </div>
-                    </div>
+            <div class="description-container">
+                <div class="description-text">Här har vi en fantastik beskrivning av hur jag gick till arbetsförmedlingen med mitt CV</div>
+            </div>
+            <div class="button-panel">
+                <div class="horizontal-buttons">
+                    <button class="button upvote-button">Vote Up</button>
+                    <button class="button downvote-button">Vote Down</button>
+                    <button class="button flag-button">Flag</button>
                 </div>
-
-                <div class="description-container">
-                    <div class="description-text">Här har vi en fantastik beskrivning av hur jag gick till arbetsförmedlingen med mitt CV</div>
-                </div>
-                <div class="button-panel">
-                    <div class="horizontal-buttons">
-                        <button class="button upvote-button"><%= upvoteText%></button>
-                        <button class="button downvote-button"><%= downvoteText%></button>
-                        <button class="button flag-button"><%= flagText%></button>
-                    </div>
-                    <div class="button translate-button"></div>
-                </div>
+                <button class="button translate-button">Translate</button>
+            </div>
+            <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
         </div>
-        <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
         <script>
 
         </script>
