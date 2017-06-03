@@ -78,12 +78,14 @@
 
 
             .login-base{ position: fixed; display: flex; justify-content: center; align-items: flex-start; width: 100%; min-height: 100%; height: 100vh; background-color: rgba(0,0,0,0.7); }
+            .create-base{ background-color: rgba(0,0,0,0); }
             .login-outline{ padding: 1rem; margin-top: 5rem; width: 15rem; background-color: #fafafa; box-shadow: 0.2rem 0.2rem 0.7rem #202020; }
             .login-text{ text-align: center; }
             .login-input-container{ margin: 1rem; }
             .login-input{ text-align: center; }
             .login-submit-button{ display:block; margin: 0 auto; background-color: #25DA8C; }
-
+            .login-create{ text-align: center; margin-top: 1rem; }
+            .login-create:hover{ text-decoration: underline; cursor: pointer; }
             .login-hidden{ display: none; }
         </style>
     </head>
@@ -95,6 +97,19 @@
                     <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input></div>
                     <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input></div>
                     <input class="login-submit-button button" type="submit"></input>
+                </form>
+                <div class="login-create" onclick="openAccountcreation(true);">Create account</div>
+            </div>
+        </div>
+        <div class="login-base create-base login-hidden" onclick="openAccountcreation(false);">
+            <div class="login-outline">
+                <div class="login-text">Create account</div>
+                <form action="/login" method="post">
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input></div>
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="email" type="email" placeholder="Email"></input></div>
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input></div>
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="confirmpassword" type="password" placeholder="Confirm password"></input></div>
+                    <input class="login-submit-button button" type="submit" value="Create account"></input>
                 </form>
             </div>
         </div>
@@ -162,11 +177,19 @@
         </div>
         <script>
             document.getElementsByClassName("login-outline")[0].addEventListener("click", function (event) { event.stopPropagation(); } );
+            document.getElementsByClassName("login-outline")[1].addEventListener("click", function (event) { event.stopPropagation(); } );
             function openLogin(shouldOpen) {
                 if(shouldOpen) {
                     document.getElementsByClassName("login-base")[0].classList.remove("login-hidden");
                 } else {
                     document.getElementsByClassName("login-base")[0].classList.add("login-hidden");
+                }
+            }
+            function openAccountcreation(shouldOpen) {
+                if(shouldOpen) {
+                    document.getElementsByClassName("login-base")[1].classList.remove("login-hidden");
+                } else {
+                    document.getElementsByClassName("login-base")[1].classList.add("login-hidden");
                 }
             }
         </script>
