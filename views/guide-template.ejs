@@ -2,87 +2,66 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/png" href="/res/128x128_logo.png">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Perpetual Projects</title>
-        <link rel="stylesheet" type="text/css" href="../public/css/common.css">
-        <style>
-            body{ margin: 0; }
-            .container{ max-width: 60rem; }
-            .guide-header{font-size: 1.5rem; text-align: center;}
-            .guide-row{ padding: 1rem; }
-
-            .path-step{ display: flex; border: black solid 0.1rem; padding: 0.5rem; border-radius: 0.6rem; margin-bottom: 1rem; }
-            .path-step:last-child{ margin-bottom: 0; }
-            .path-header{ width:100%; }
-            .path-index{ min-width: 2rem; display: flex; justify-content: center; align-items: center; }
-            .path-element{ flex-grow: 1; }
-
-            .text-input-container > textarea{ margin-bottom: -0.2rem; }
-            .button-style{ color: white; border: black solid 0.1rem; border-radius: 0.3rem; background-color: green; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; }
-
-            .text-input-container{ padding: 0.2rem; border: black solid 0.1rem; border-radius: 0.3rem; background: #fafafa; }
-            .text-input{ background: transparent; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; width: 100%; padding: 0; border: 0; margin: 0; resize: vertical;}
-            .alternative-radio{ display: block; padding: 0.3rem; margin-left: 1rem; margin-right: 1rem; border: transparent solid 0.1rem; border-radius: 0.3rem; }
-            .radio-selected{ border-color: black; }
-            .radio-input{ display: none; }
-            .radio-container{ display:flex; justify-content: space-around; padding-left: 6rem; padding-right: 6rem;}
-
-            .input-instruction-text{ margin: 0.3rem; }
-
-            .center-row{ text-align: center; }
-            .footer{ text-align: center; margin: 1rem; }
-        </style>
+        <link rel="stylesheet" type="text/css" href="/css/common.css">
     </head>
     <body>
-        <div class="container">
-            <div class="guide-header"><%= fillOutYourGuide%></div>
-            <form action="create-guide/upload" method="POST">
-                <div class="guide-row">
-                    <div class="center-row input-instruction-text"><%= titleLabel%></div>
-                    <div class="text-input-container"><input class="text-input" type="text" name="title"></input></div>
-                </div>
+        <%- include header %>
+        <div class="paper-center">
+            <div class="main-paper">
+                <div class="page-text-width">
+                    <div class="green-header"><%= fillOutYourGuide%></div>
+                        <form action="create-guide/upload" method="POST">
+                            <div class="edit-guide-row">
+                                <div class="center-row input-instruction-text"><%= titleLabel%></div>
+                                <div class="text-input-container"><input class="text-input center-row" type="text" name="title"></input></div>
+                            </div>
 
-                <div class="guide-row">
-                    <div class="center-row input-instruction-text"><%= wasThisYourFirstJobInSweden%></div>
-                    <div class="center-row radio-container">
-                        <label class="alternative-radio"><%= yes%><input class="radio-input" type="radio" name="firstJob" value="yes" onchange="radioChanged(event);"></input></label>
-                        <label class="alternative-radio"><%= no%><input class="radio-input" type="radio" name="firstJob" value="no" onchange="radioChanged(event);"></input></label>
+                            <div class="edit-guide-row">
+                                <div class="center-row input-instruction-text"><%= wasThisYourFirstJobInSweden%></div>
+                                <div class="center-row radio-container">
+                                    <label class="alternative-radio"><%= yes%><input class="radio-input" type="radio" name="firstJob" value="yes" onchange="radioChanged(event);"></input></label>
+                                    <label class="alternative-radio"><%= no%><input class="radio-input" type="radio" name="firstJob" value="no" onchange="radioChanged(event);"></input></label>
+                                </div>
+                            </div>
+
+                            <div class="edit-guide-row">
+                                <div class="center-row input-instruction-text"><%= whatKindOfJobIsIt%></div>
+                                <div class="text-input-container"><input class="text-input center-row" type="text" name="jobType"></input></div>
+                            </div>
+
+                            <div class="edit-guide-row">
+                                <div class="center-row input-instruction-text"><%= whatEducationDidYouHave%></div>
+                                <div class="text-input-container"><input class="text-input center-row" type="text" name="previousEducation"></input></div>
+                            </div>
+
+                            <div class="edit-guide-row">
+                                <div class="center-row input-instruction-text"><%= whatOccupationHaveYouHad%></div>
+                                <div class="text-input-container"><input class="text-input center-row" type="text" name="previousOccupation"></input></div>
+                            </div>
+
+                            <div class="edit-guide-row">
+                                <div class="center-row input-instruction-text"><%= howIdidIt%></div>
+                                <div class="path-step-container"></div>
+                            </div>
+                            <div class="edit-guide-row">
+                                <div class="center-row input-instruction-text"><%= descriptionPreferablyShort%></div>
+                                <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guideDescription"></textarea></div>
+                            </div>
+                            <input type="text" id="hiddenNumberBullets" name="numberBullets" style="display: none">
+                            <div class="edit-guide-row">
+                                <div class="center-row">
+                                    <input class="button submit-button font-medium" type="submit" value="<%= submitButtonText%>"></input>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
-                <div class="guide-row">
-                    <div class="center-row input-instruction-text"><%= whatKindOfJobIsIt%></div>
-                    <div class="text-input-container"><input class="text-input" type="text" name="jobType"></input></div>
-                </div>
-
-                <div class="guide-row">
-                    <div class="center-row input-instruction-text"><%= whatEducationDidYouHave%></div>
-                    <div class="text-input-container"><input class="text-input" type="text" name="previousEducation"></input></div>
-                </div>
-
-                <div class="guide-row">
-                    <div class="center-row input-instruction-text"><%= whatOccupationHaveYouHad%></div>
-                    <div class="text-input-container"><input class="text-input" type="text" name="previousOccupation"></input></div>
-                </div>
-
-                <div class="guide-row">
-                    <div class="center-row input-instruction-text"><%= howIdidIt%></div>
-                    <div class="path-step-container"></div>
-                </div>
-                <div class="guide-row">
-                    <div class="center-row input-instruction-text"><%= descriptionPreferablyShort%></div>
-                    <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guideDescription"></textarea></div>
-                </div>
-                <input type="text" id="hiddenNumberBullets" name="numberBullets" style="display: none">
-                <div class="guide-row">
-                    <div class="center-row">
-                        <input class="button-style" type="submit" value="<%= submitButtonText%>"></input>
-                    </div>
-                </div>
-            </form>
-        </div>
+            </div>
         <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
         <script>
             var maxSteps = 15;
@@ -94,7 +73,7 @@
                 var pathStep = document.createElement("div");
                 pathStep.className = "path-step";
                 var pathIndex = document.createElement("div");
-                pathIndex.className = "path-index";
+                pathIndex.className = "path-index font-large";
                 var pathElement = document.createElement("div");
                 pathElement.className = "path-element";
 

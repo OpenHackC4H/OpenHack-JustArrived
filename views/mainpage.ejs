@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="/res/128x128_logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -39,7 +40,7 @@
                     <div class="green-header">Guides</div>
 
                     <% for (var i = 0; i < guides.length; i++) { %>
-                        <a href="/guide/<%= guides[i]._id%>">
+                        <a class="guide-link" href="/guide/<%= guides[i]._id%>">
                             <div class="guide-row">
                                 <div class="bannerText font-medium">
                                     <%= guides[i].title %>
