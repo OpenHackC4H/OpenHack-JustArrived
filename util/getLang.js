@@ -11,7 +11,8 @@ module.exports = function(req, res, next){
         "whatEducationDidYouHave",
         "path",
         "descriptionPreferablyShort",
-        "submitButtonText"
+        "submitButtonText",
+        "whatOccupationsHaveYouHad"
     ] ;
     var lang = req.cookies.lang;
     var filepath = path.join(__dirname, '../lang/' + lang + '.json');
