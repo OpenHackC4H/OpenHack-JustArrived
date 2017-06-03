@@ -8,65 +8,161 @@
         <title>Perpetual Projects</title>
         <style>
             body{ margin: 0; }
-
+            .container{ max-width: 60rem; }
             .guide-header{font-size: 1.5rem; text-align: center;}
             .guide-row{ padding: 1rem; }
 
-            .path-step{ display: flex; background-color: lightgray; padding: 0.5rem; border-radius: 0.6rem;}
+            .path-step{ display: flex; border: black solid 0.1rem; padding: 0.5rem; border-radius: 0.6rem; margin-bottom: 1rem; }
+            .path-step:last-child{ margin-bottom: 0; }
             .path-header{ width:100%; }
             .path-index{ min-width: 2rem; display: flex; justify-content: center; align-items: center; }
             .path-element{ flex-grow: 1; }
 
             .text-input-container > textarea{ margin-bottom: -0.2rem; }
+            .button-style{ color: white; border: black solid 0.1rem; border-radius: 0.3rem; background-color: green; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; }
 
             .text-input-container{ padding: 0.2rem; border: black solid 0.1rem; border-radius: 0.3rem; background: #fafafa; }
             .text-input{ background: transparent; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; width: 100%; padding: 0; border: 0; margin: 0; resize: vertical;}
-            .alternative-radio{ margin-left: 1rem; margin-right: 1rem; }
+            .alternative-radio{ display: block; padding: 0.3rem; margin-left: 1rem; margin-right: 1rem; border: transparent solid 0.1rem; border-radius: 0.3rem; }
+            .radio-selected{ border-color: black; }
+            .radio-input{ display: none; }
+            .radio-container{ display:flex; justify-content: space-around; padding-left: 6rem; padding-right: 6rem;}
 
-            .footer{ text-align: center; }
+            .input-instruction-text{ margin: 0.3rem; }
+
+            .center-row{ text-align: center; }
+            .footer{ text-align: center; margin: 1rem; }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="guide-header"><%= fillOutYourGuide%></div>
-            <form>
+            <form action="upload" method="POST">
                 <div class="guide-row">
-                    <div><%= wasThisYourFirstJobInSweden?%></div>
-                    <label class="alternative-radio"><%= yes%><input type="radio" name="firstjob" value="yes"></input></label>
-                    <label class="alternative-radio"><%= no%><input type="radio" name="firstjob" value="no"></input></label>
-                </div>
-
-                <div class="guide-row">
-                    <div><%= whatKindOfJobIsIt?%></div>
-                    <div class="text-input-container"><input class="text-input" type="text"></input></div>
-                </div>
-
-                <div class="guide-row">
-                    <div><%= whatEducationDidYouHave?%></div>
-                    <div class="text-input-container"><input class="text-input" type="text"></input></div>
-                </div>
-
-                <div class="guide-row">
-                    <div><%= path%></div>
-                    <div class="path-step">
-                        <div class="path-index">1.</div>
-                        <div class="path-element">
-                            <div class="text-input-container"><input class="path-header text-input" type="text" oninput="handlePathChange();"></input></div>
-                            <div style="height: 0.1rem;"></div>
-                            <div class="text-input-container"><textarea class="path-header text-input" oninput="handlePathChange();"></textarea></div>
-                        </div>
+                    <div class="center-row input-instruction-text"><%= wasThisYourFirstJobInSweden%></div>
+                    <div class="center-row radio-container">
+                        <label class="alternative-radio"><%= yes%><input class="radio-input" type="radio" name="firstjob" value="yes" onchange="radioChanged(event);"></input></label>
+                        <label class="alternative-radio"><%= no%><input class="radio-input" type="radio" name="firstjob" value="no" onchange="radioChanged(event);"></input></label>
                     </div>
                 </div>
+
                 <div class="guide-row">
-                    <div><%= descriptionPreferablyShort%></div>
-                    <div class="text-input-container"><textarea class="path-header text-input"></textarea>
+                    <div class="center-row input-instruction-text"><%= whatKindOfJobIsIt%></div>
+                    <div class="text-input-container"><input class="text-input" type="text" name="jobtype"></input></div>
+                </div>
+
+                <div class="guide-row">
+                    <div class="center-row input-instruction-text"><%= whatEducationDidYouHave%></div>
+                    <div class="text-input-container"><input class="text-input" type="text" name="previouseducation"></input></div>
+                </div>
+
+                <div class="guide-row">
+                    <div class="center-row input-instruction-text"><%= howIdidIt%></div>
+                    <div class="path-step-container"></div>
+                </div>
+                <div class="guide-row">
+                    <div class="center-row input-instruction-text"><%= descriptionPreferablyShort%></div>
+                    <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guidedescription"></textarea></div>
+                </div>
+                <input type="text" id="hiddenNumberBullets" name="numberBullets" style="display: none">
+                <div class="guide-row">
+                    <div class="center-row">
+                        <input class="button-style" type="submit" value="<%= submitButtonText%>"></input>
+                    </div>
                 </div>
             </form>
         </div>
         <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
         <script>
+            var maxSteps = 15;
+            addNewPathStep();
+            function addNewPathStep() {
+                if(document.getElementsByClassName("path-step-container")[0].children.length == maxSteps) {
+                    return;
+                }
+                var pathStep = document.createElement("div");
+                pathStep.className = "path-step";
+                var pathIndex = document.createElement("div");
+                pathIndex.className = "path-index";
+                var pathElement = document.createElement("div");
+                pathElement.className = "path-element";
+
+                var shortHeader = document.createElement("div");
+                shortHeader.className = "text-input-container";
+                var shortHeaderInput = document.createElement("input");
+                shortHeaderInput.className = "path-header text-input";
+                shortHeaderInput.type = "text";
+                shortHeaderInput.addEventListener("input", function(event){ handlePathChange(event); });
+                shortHeaderInput.addEventListener("blur", function(event){ handlePathBlur(event); });
+                shortHeader.appendChild(shortHeaderInput);
+
+
+                var spacer = document.createElement("div");
+                spacer.style.height = "0.1rem";
+
+                var description = document.createElement("div");
+                description.className = "text-input-container";
+                var descriptionInput = document.createElement("textarea");
+                descriptionInput.className = "path-header text-input";
+                descriptionInput.rows = "4";
+                descriptionInput.addEventListener("input", function(event){ handlePathChange(event); });
+                descriptionInput.addEventListener("blur", function(event){ handlePathBlur(event); });
+                description.appendChild(descriptionInput);
+
+                pathElement.appendChild(shortHeader);
+                pathElement.appendChild(spacer);
+                pathElement.appendChild(description);
+
+                pathStep.appendChild(pathIndex);
+                pathStep.appendChild(pathElement);
+
+                var container = document.getElementsByClassName("path-step-container")[0];
+
+                container.appendChild(pathStep);
+                rewriteIndexes();
+            }
             function handlePathChange() {
+                var lastStep = document.getElementsByClassName("path-step-container")[0].lastElementChild;
+                if(!isEmpty(lastStep)) {
+                    addNewPathStep();
+                }
+            }
+            function rewriteIndexes() {
+                var rows = document.getElementsByClassName("path-step-container")[0].children;
+                for(var i = 0; i < rows.length; i++) {
+                    rows[i].children[0].innerHTML = i + 1;
+                    rows[i].children[1].children[0].children[0].name="bullet-title-" + i;
+                    rows[i].children[1].children[2].children[0].name="bullet-descr-" + i;
+                }
+                document.getElementById("hiddenNumberBullets").value = rows.length;
+            }
+            function handlePathBlur(event) {
+                var row = event.target.parentElement.parentElement.parentElement;
                 
+                if(isEmpty(row)) {
+                    if(row != document.getElementsByClassName("path-step-container")[0].lastElementChild)
+                    //delete it
+                    row.parentElement.removeChild(row);
+                    rewriteIndexes();
+                }
+                if(!isEmpty(document.getElementsByClassName("path-step-container")[0].lastElementChild)) {
+                    addNewPathStep();
+                }
+                
+            }
+            function isEmpty(step) {
+                if((step.children[1].children[0].children[0].value != "") || (step.children[1].children[2].children[0].value != "")) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            function radioChanged(event) {
+                var radios = document.getElementsByClassName("alternative-radio");
+                for(var i = 0; i < radios.length; i++) {
+                    radios[i].classList.remove("radio-selected");                    
+                }
+                event.target.parentElement.classList.add("radio-selected");
             }
         </script>
     </body>
