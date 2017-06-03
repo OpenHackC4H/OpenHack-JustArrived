@@ -11,9 +11,10 @@ var GuideSchema = new Schema({
     education: { type: String, required: true },
     bullets: { type: [BulletSchema], required: true },
     upvotes: { type: Number, required: true },
+    prevOccupation: { type: String, required: true },
     description: String,
     language: { type: String, required: true },
     author: { type: Schema.Types.ObjectId, required: true }
-})
+});
 
 module.exports = mongoose.model('Guide', GuideSchema);

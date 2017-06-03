@@ -9,7 +9,11 @@ var Guide = require('../models/guide');
 var router = new express.Router();
 
 router.get('/', function(req, res) {
-    res.render("guide-template", req.langObj);
+
+    var params = req.langObj;
+    params.loggedIn = req.isAuthenticated();
+
+    res.render("guide-template", params);
 });
 
 router.post('/upload', function(req, res) {
@@ -24,6 +28,7 @@ router.post('/upload', function(req, res) {
         guide.firstJob = (req.body.firstJob === 'yes' ? true : false);
         guide.job = validator.trim(req.body.jobType);
         guide.education = validator.trim(req.body.previousEducation);
+        guide.prevOccupation = validator.trim(req.body.previousOccupation);
         guide.upvotes = 0;
 
         var bullets = [];

@@ -8,6 +8,7 @@ var router = new express.Router();
 router.get('/:id', function(req, res) {
 
     params = req.langObj;
+    params.loggedIn = req.isAuthenticated();
 
     Guide.findById(req.params.id, function (err, guide) {
         if (err) {
@@ -21,6 +22,7 @@ router.get('/:id', function(req, res) {
         params.isFirstJob = guide.firstJob;
         params.job = guide.job;
         params.education = guide.education;
+        params.occupation = guide.prevOccupation;
         params.bullets = guide.bullets;
         params.description = guide.description;
 

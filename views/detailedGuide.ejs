@@ -1,97 +1,89 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>Perpetual Projects</title>
-        <link rel="stylesheet" type="text/css" href="../public/css/common.css">
-    </head>
-    <body>
-        <div class="login-base login-hidden" onclick="openLogin(false);">
-            <div class="login-outline">
-                <div class="login-text">Login</div>
-                <form action="/login" method="post">
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input></div>
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input></div>
-                    <input class="login-submit-button button" type="submit"></input>
-                </form>
-                <div class="login-create" onclick="openAccountcreation(true);">Create account</div>
-            </div>
-        </div>
-        <div class="login-base create-base login-hidden" onclick="openAccountcreation(false);">
-            <div class="login-outline">
-                <div class="login-text">Create account</div>
-                <form action="/login" method="post">
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input></div>
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="email" type="email" placeholder="Email"></input></div>
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input></div>
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="confirmpassword" type="password" placeholder="Confirm password"></input></div>
-                    <input class="login-submit-button button" type="submit" value="Create account"></input>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="paper-center">
-        <div class="navigation-bar">
-            <div class="nav nav-logo"></div>
-            <div class="nav button nav-search"><input class="nav nav-searh-input text-input" type="text" name="search" placeholder="Search"></input>
-            </div>
-            <button class="nav button nav-new-guide">Your guide</button>
-            <button class="nav button nav-account">Logout</button>
-            <button class="nav button nav-login" onclick="openLogin(true);">Login</button>
-        </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Perpetual Projects</title>
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+</head>
+
+<body>
+    <%- include header %>
         <div class="paper-center">
             <div class="main-paper">
                 <div class="page-text-width">
                     <div class="placeholder-container">
-                        <div class="green-header"><%= title%></div>
+                        <div class="green-header">
+                            <%= title%>
+                        </div>
                     </div>
                     <div class="short-info-container">
                         <div class="short-guide-facts-container">
                             <div class="short-guide-facts">
-                                <div class="short-fact-header"><%= firstJobLabel%></div>
+                                <div class="short-fact-header">
+                                    <%= firstJobLabel%>
+                                </div>
                                 <% if (isFirstJob) { %>
-                                    <div class="short-fact-text"><%= yes%></div>
-                                <% } else { %>
-                                <div class="short-fact-text"><%= no%></div>
-                                <% } %>
+                                    <div class="short-fact-text">
+                                        <%= yes%>
+                                    </div>
+                                    <% } else { %>
+                                        <div class="short-fact-text">
+                                            <%= no%>
+                                        </div>
+                                        <% } %>
                             </div>
                             <div class="short-guide-facts">
-                                <div class="short-fact-header"><%= educationLabel%></div>
-                                <div class="short-fact-text"><%= education%></div>
+                                <div class="short-fact-header">
+                                    <%= educationLabel%>
+                                </div>
+                                <div class="short-fact-text">
+                                    <%= education%>
+                                </div>
                             </div>
                             <div class="short-guide-facts">
-                                <div class="short-fact-header"><%= prevOccupationLabel%></div>
-                                <div class="short-fact-text"><%= occupation%></div>
+                                <div class="short-fact-header">
+                                    <%= prevOccupationLabel%>
+                                </div>
+                                <div class="short-fact-text">
+                                    <%= occupation%>
+                                </div>
                             </div>
                             <div class="short-guide-facts">
-                                <div class="short-fact-header"><%= jobLabel%></div>
-                                <div class="short-fact-text"><%= job%></div>
+                                <div class="short-fact-header">
+                                    <%= jobLabel%>
+                                </div>
+                                <div class="short-fact-text">
+                                    <%= job%>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="bullet-container">
-                <% for (var i = 0; i < bullets.length; i++) { %>
-                    <div class="bullet-row">
-                        <div class="bullet-index">
-                            <%= bullets[i].order + 1%>
-                        </div>
-                        <div class="bullet-title-description-container">
-                            <div class="bullet-title">
-                                <%= bullets[i].title%>
+                        <% for (var i = 0; i < bullets.length; i++) { %>
+                            <div class="bullet-row">
+                                <div class="bullet-index">
+                                    <%= bullets[i].order + 1%>
+                                </div>
+                                <div class="bullet-title-description-container">
+                                    <div class="bullet-title">
+                                        <%= bullets[i].title%>
+                                    </div>
+                                    <div class="bullet-description">
+                                        <%= bullets[i].description%>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="bullet-description">
-                                <%= bullets[i].description%>
-                            </div>
-                        </div>
-                    </div>
-                    <% } %>
+                            <% } %>
                     </div>
 
                     <div class="description-container">
-                        <div class="description-text"><%= description%></div>
+                        <div class="description-text">
+                            <%= description%>
+                        </div>
                     </div>
                     <div class="button-panel">
                         <div class="horizontal-buttons">
@@ -103,25 +95,9 @@
                     </div>
                 </div>
             </div>
-            <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
         </div>
-        <script>
-            document.getElementsByClassName("login-outline")[0].addEventListener("click", function (event) { event.stopPropagation(); } );
-            document.getElementsByClassName("login-outline")[1].addEventListener("click", function (event) { event.stopPropagation(); } );
-            function openLogin(shouldOpen) {
-                if(shouldOpen) {
-                    document.getElementsByClassName("login-base")[0].classList.remove("login-hidden");
-                } else {
-                    document.getElementsByClassName("login-base")[0].classList.add("login-hidden");
-                }
-            }
-            function openAccountcreation(shouldOpen) {
-                if(shouldOpen) {
-                    document.getElementsByClassName("login-base")[1].classList.remove("login-hidden");
-                } else {
-                    document.getElementsByClassName("login-base")[1].classList.add("login-hidden");
-                }
-            }
-        </script>
-    </body>
+        <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
+        <script src="/scripts/login.js"></script>
+</body>
+
 </html>

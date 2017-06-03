@@ -1,133 +1,104 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>Perpetual Projects</title>
-        <link rel="stylesheet" type="text/css" href="../public/css/common.css">
-        <style>
-            .color-primary-0 { color: #00B568 }
-            .color-primary-1 { color: #25DA8C }
-            .color-primary-2 { color: #00DE7F }
-            .color-primary-3 { color: #009052 }
-            .color-primary-4 { color: #006F3F }
 
-            
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Perpetual Projects</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <style>
+        .color-primary-0 {
+            color: #00B568
+        }
 
-        </style>
-    </head>
-    <body>
-        <div class="login-base login-hidden" onclick="openLogin(false);">
-            <div class="login-outline">
-                <div class="login-text">Login</div>
-                <form action="/login" method="post">
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input></div>
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input></div>
-                    <input class="login-submit-button button" type="submit"></input>
-                </form>
-                <div class="login-create" onclick="openAccountcreation(true);">Create account</div>
-            </div>
-        </div>
-        <div class="login-base login-create-base login-hidden" onclick="openAccountcreation(false);">
-            <div class="login-outline">
-                <div class="login-text">Create account</div>
-                <form action="/login" method="post">
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input></div>
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="email" type="email" placeholder="Email"></input></div>
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input></div>
-                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="confirmpassword" type="password" placeholder="Confirm password"></input></div>
-                    <input class="login-submit-button button" type="submit" value="Create account"></input>
-                </form>
-            </div>
-        </div>
-         <div class="paper-center">
-            <div class="navigation-bar">
-                <div class="nav nav-logo"></div>
-                <div class="nav button nav-search"><input class="nav nav-searh-input text-input" type="text" name="search" placeholder="Search"></input></div>
-                <button class="nav button nav-new-guide">Your guide</button>
-                <button class="nav button nav-account">Logout</button>
-                <button class="nav button nav-login" onclick="openLogin(true);">Login</button>
-            </div>
-        </div>
+        .color-primary-1 {
+            color: #25DA8C
+        }
+
+        .color-primary-2 {
+            color: #00DE7F
+        }
+
+        .color-primary-3 {
+            color: #009052
+        }
+
+        .color-primary-4 {
+            color: #006F3F
+        }
+    </style>
+</head>
+
+<body>
+    <%- include header %>
         <div class="paper-center">
             <div class="main-paper">
                 <div class="page-text-width">
                     <div class="green-header">Guides</div>
 
-                    <div class="guide-row">
-                        <div class="bannerText font-medium">Title of the guide</div>
-                        <div class="short-guide-facts-container">
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">First job</div>
-                                <div class="short-fact-text">Yes</div>
+                    <% for (var i = 0; i < guides.length; i++) { %>
+                        <a href="/guide/<%= guides[i]._id%>">
+                            <div class="guide-row">
+                                <div class="bannerText font-medium">
+                                    <%= guides[i].title %>
+                                </div>
+                                <div class="short-guide-facts-container">
+                                    <div class="short-guide-facts">
+                                        <div class="short-fact-header">
+                                            <%= firstJobLabel%>
+                                        </div>
+                                        <% if (guides[i].firstJob) { %>
+                                            <div class="short-fact-text">
+                                                <%= yes%>
+                                            </div>
+                                            <% } else { %>
+                                                <div class="short-fact-text">
+                                                    <%= no%>
+                                                </div>
+                                                <% } %>
+                                    </div>
+                                    <div class="short-guide-facts">
+                                        <div class="short-fact-header">
+                                            <%= educationLabel%>
+                                        </div>
+                                        <div class="short-fact-text">
+                                            <%= guides[i].education%>
+                                        </div>
+                                    </div>
+                                    <div class="short-guide-facts">
+                                        <div class="short-fact-header">
+                                            <%= prevOccupationLabel%>
+                                        </div>
+                                        <div class="short-fact-text">
+                                            <%= guides[i].prevOccupation%>
+                                        </div>
+                                    </div>
+                                    <div class="short-guide-facts">
+                                        <div class="short-fact-header">
+                                            <%= jobLabel%>
+                                        </div>
+                                        <div class="short-fact-text">
+                                            <%= guides[i].job%>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bannerText font-medium">
+                                    <% for (var j = 0; j < guides[i].bullets.length; j++) { %>
+                                        <% if (j > 0) { %>>
+                                            <% } %>
+                                                <%= guides[i].bullets[j].title%>
+                                                    <% } %>
+                                </div>
                             </div>
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">Education</div>
-                                <div class="short-fact-text">Computer science</div>
-                            </div>
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">previous ocupation</div>
-                                <div class="short-fact-text">Carpenter</div>
-                            </div>
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">Job type</div>
-                                <div class="short-fact-text">Programmer</div>
-                            </div>
-                        </div>
-                        <div class="bannerText font-medium">stepbystep > CV > Arbetsförmedlingen</div>
-                    </div>
-
-                     <div class="guide-row">
-                        <div class="bannerText font-medium">Title of the guide</div>
-                        <div class="short-guide-facts-container">
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">First job</div>
-                                <div class="short-fact-text">Yes</div>
-                            </div>
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">Education</div>
-                                <div class="short-fact-text">Computer science</div>
-                            </div>
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">previous ocupation</div>
-                                <div class="short-fact-text">Carpenter</div>
-                            </div>
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">Job type</div>
-                                <div class="short-fact-text">Programmer</div>
-                            </div>
-                        </div>
-                        <div class="bannerText font-medium">stepbystep > CV > Arbetsförmedlingen</div>
-                    </div>
-
-                    <div class="guide-row">
-                        <div class="bannerText font-medium">Title of the guide</div>
-                        <div class="short-guide-facts-container">
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">First job</div>
-                                <div class="short-fact-text">Yes</div>
-                            </div>
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">Education</div>
-                                <div class="short-fact-text">Computer science</div>
-                            </div>
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">previous ocupation</div>
-                                <div class="short-fact-text">Carpenter</div>
-                            </div>
-                            <div class="short-guide-facts">
-                                <div class="short-fact-header">Job type</div>
-                                <div class="short-fact-text">Programmer</div>
-                            </div>
-                        </div>
-                        <div class="bannerText font-medium">stepbystep > CV > Arbetsförmedlingen</div>
-                    </div>
-
+                        </a>
+                        <% } %>
                 </div>
             </div>
         </div>
         <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
-    </body>
+        <script src="/scripts/login.js"></script>
+</body>
+
 </html>

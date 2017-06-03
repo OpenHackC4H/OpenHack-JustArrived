@@ -94,5 +94,5 @@ app.post('/signup', function(req, res, next) {
 app.use('/', require('./routes/index'));
 
 app.listen(port, function() {
-    console.log("Hello World listening on port " + port + "!");
+    console.log("Magic happening on port " + port + "!");
 });

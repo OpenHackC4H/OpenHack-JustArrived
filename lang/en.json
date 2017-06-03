@@ -4,11 +4,11 @@
     "wasThisYourFirstJobInSweden":"Was this your first job in Sweden?",
     "yes":"Yes",
     "no":"No",
-    "whatKindOfJobIsIt":"What kind of job is it?",
+    "whatKindOfJobIsIt":"What kind of job was it?",
     "whatEducationDidYouHave":"What education did you have?",
     "path":"Path",
     "descriptionPreferablyShort":"A preferably short description",
-    "whatOccupationsHaveYouHad":"What occupations have you had previously?",
+    "whatOccupationHaveYouHad":"What is your most recent previous occupation?",
     "submitButtonText": "Submit",
     "firstJobLabel": "First Job",
     "educationLabel": "Education",
@@ -17,6 +17,7 @@
     "voteDownLabel": "Vote Down",
     "flagLabel": "Flag",
     "translateLabel": "Translate",
-    "titleLabel": "Title"
+    "titleLabel": "Title",
+    "prevOccupationLabel": "Previous Occupation"
 }
 

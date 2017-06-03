@@ -1,0 +1,42 @@
+<div class="login-base login-hidden" onclick="openLogin(false);">
+    <div class="login-outline">
+        <div class="login-text">Login</div>
+        <form action="/login" method="post">
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input>
+            </div>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input>
+            </div>
+            <input class="login-submit-button button" type="submit"></input>
+        </form>
+        <div class="login-create" onclick="openAccountcreation(true);">Create account</div>
+    </div>
+</div>
+<div class="login-base login-create-base login-hidden" onclick="openAccountcreation(false);">
+    <div class="login-outline">
+        <div class="login-text">Create account</div>
+        <form action="/login" method="post">
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input>
+            </div>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="email" type="email" placeholder="Email"></input>
+            </div>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input>
+            </div>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="confirmpassword" type="password" placeholder="Confirm password"></input>
+            </div>
+            <input class="login-submit-button button" type="submit" value="Create account"></input>
+        </form>
+    </div>
+</div>
+<div class="paper-center">
+    <div class="navigation-bar">
+        <div class="nav nav-logo"></div>
+        <div class="nav button nav-search"><input class="nav nav-searh-input text-input" type="text" name="search" placeholder="Search"></input>
+        </div>
+        <a href="/create-guide"><button class="nav button nav-new-guide">Your guide</button></a>
+        <% if (loggedIn) {%>
+            <button class="nav button nav-account">Logout</button>
+            <% } else { %>
+                <button class="nav button nav-login" onclick="openLogin(true);">Login</button>
+                <% } %>
+    </div>
+</div>
