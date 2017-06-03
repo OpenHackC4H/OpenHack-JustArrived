@@ -8,23 +8,20 @@ module.exports = function(passport) {
 
     var router = new express.Router();
 
-    router.get('/:lang/guide', function(req, res) {
-        var lang = req.params.lang;
+    router.get('/', function(req, res) {
+        var lang = req.cookies.lang;
         var json;
         var filepath = path.join(__dirname, '../lang/' + lang + '.json');
         fs.readFile(filepath, function(err , data){
             if(err){
+                console.log("Language file for language " + lang + " not found! Falling back to english.");
                 filepath = path.join(__dirname, '../lang/en.json');
                 fs.readFile(filepath, function(err, data ){
-                    console.log("goddag " + err);
-                    console.log("goddag " + data);
                     json = JSON.parse(data);
-                    res.render("mainpage", json);
+                    res.render("guide-template", json);
                 });
             }
             else{
-                console.log("Hej " + err);
-                console.log("Hej " + data);
                 json = JSON.parse(data);
                 res.render("guide-template", json);
             }
