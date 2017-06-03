@@ -9,7 +9,10 @@ mongoose.connect(dbConfig.url);
 
 //Start ExpressJS initialization.
 const app = express();
-var port = 8080;
+var port = 7425;
+
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
