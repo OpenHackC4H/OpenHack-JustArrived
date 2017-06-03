@@ -1,104 +1,475 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>Perpetual Projects</title>
-        <style>
-            body{ margin: 0; display: flex; justify-content: center; }
-            .container{ max-width: 40rem; padding: 1rem; }
-            .guide-header{font-size: 1.5rem; text-align: center;}
-            .guide-row{ padding: 1rem; }
 
-            .placeholder{ color: white; background: #00B568; padding: 0.5rem; max-width: 25rem; margin: 0 auto; }
-            .placeholder-container{ padding: 0.5rem; }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Perpetual Projects</title>
+    <style>
+        body {
+            margin: 0;
+        }
 
-            .path-step{ display: flex; border: black solid 0.1rem; padding: 0.5rem; border-radius: 0.6rem; margin-bottom: 1rem; }
-            .path-step:last-child{ margin-bottom: 0; }
-            .path-header{ width:100%; }
-            .path-index{ min-width: 2rem; display: flex; justify-content: center; align-items: center; }
-            .path-element{ flex-grow: 1; }
+        .description-container {
+            padding: 0.5rem;
+            max-width: 25rem;
+            margin: 0 auto;
+        }
 
-            .text-input-container > textarea{ margin-bottom: -0.2rem; }
-            .button-style{ color: white; border: black solid 0.1rem; border-radius: 0.3rem; background-color: green; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; }
+        .button-panel {
+            padding: 0.5rem;
+            max-width: 25rem;
+            margin: 0 auto;
+        }
 
-            .text-input-container{ padding: 0.2rem; border: black solid 0.1rem; border-radius: 0.3rem; background: #fafafa; }
-            .text-input{ background: transparent; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; width: 100%; padding: 0; border: 0; margin: 0; resize: vertical;}
-            .alternative-radio{ display: block; padding: 0.3rem; margin-left: 1rem; margin-right: 1rem; border: transparent solid 0.1rem; border-radius: 0.3rem; }
-            .radio-selected{ border-color: black; }
-            .radio-input{ display: none; }
-            .radio-container{ display:flex; justify-content: space-around; padding-left: 6rem; padding-right: 6rem;}
+        .horizontal-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
 
-            .input-instruction-text{ margin: 0.3rem; }
+        .button {
+            background-color: transparent;
+            padding: 0.3rem;
+            color: white;
+            border: black solid 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+        }
 
-            .center-row{ text-align: center; }
-            .footer{ text-align: center; margin: 1rem; padding-bottom: 3rem; padding-top: 5rem; }
+        .container {
+            max-width: 40rem;
+            padding: 1rem;
+        }
 
-            .experience-container{ flex-grow: 1;  margin: 1rem; background-color: #fafafa; min-width: 15rem;  max-width: 40rem; box-shadow: 0.2rem 0.2rem 0.7rem #b0b0b0; }
-            .short-info-container{ color: black; padding: 0.5rem; }
-            .first-job-display{ color: white; background: linear-gradient(to right, transparent, #00B568, transparent); }
-            .short-info-horizontal{ display: flex; justify-content: center; }
-            .short-info{ width: 50%; }
+        .paper-center {
+            display: flex;
+            justify-content: center;
+        }
 
-            .bullet-container{ max-width: 25rem; margin: 0 auto; }
-            .bullet-row{ display: flex; padding: 0.5rem; padding-left: 2rem; padding-right: 2rem; }
-            .bullet-row:hover{ background: #f5f5f5; }
-            .bullet-title-description-container{ padding-left: 0.5rem; flex-grow: 1; }
-            .bullet-title{ font-weight: bold; }
-            .bullet-index{ min-width: 2rem; display: flex; justify-content: center; align-items: center; border-right: lightgray solid 0.2rem;}
-            .short-info-left{ text-align: right; border-right: solid lightgray 0.1rem; padding-right: 0.5rem; }
-            .short-info-right{ text-align: left; border-left: solid lightgray 0.1rem; padding-left: 0.5rem; }
+        .guide-header {
+            font-size: 1.5rem;
+            text-align: center;
+        }
 
-            .description-container{ padding: 0.5rem; max-width: 25rem; margin: 0 auto; }
-            .button-panel{ padding: 0.5rem; max-width: 25rem; margin: 0 auto; }
-            .horizontal-buttons{ display: flex; justify-content: space-between; }
-            .button{ width: 10rem; padding: 0.3rem; color: white; border: black solid 0; background-color: gray; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; }
+        .guide-row {
+            padding: 1rem;
+        }
 
-            .upvote-button{ background-color: #25DA8C; }
-            .downvote-button{ background-color: #ffb366; margin-right: 0.3rem; margin-left: 0.3rem; }
-            .flag-button{ background-color: #8080ff; }
-            .translate-button{ background-color: #00B568; margin-top: 1rem; display: block; width: 100%; }
-        </style>
-    </head>
-    <body>
+        .navigation-bar {
+            flex-grow: 1;
+            display: flex;
+            background-color: #fafafa;
+            min-width: 15rem;
+            max-width: 40rem;
+            box-shadow: 0.2rem 0.2rem 0.7rem #b0b0b0;
+        }
+
+        .nav-search {
+            flex-grow: 1;
+            min-width: 4rem;
+            text-align: center;
+        }
+
+        .nav-searh-input {
+            text-align: center;
+        }
+
+        .nav-logo {
+            text-align: center;
+        }
+
+        .nav-new-guide {
+            background-color: #00B568;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .nav-account {
+            background-color: #00B568;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .nav-login {
+            background-color: #00B568;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .nav {
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .placeholder {
+            color: white;
+            background: #00B568;
+            padding: 0.5rem;
+            max-width: 25rem;
+            margin: 0 auto;
+        }
+
+        .placeholder-container {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .path-step {
+            display: flex;
+            border: black solid 0.1rem;
+            padding: 0.5rem;
+            border-radius: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .path-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .path-header {
+            width: 100%;
+        }
+
+        .path-index {
+            min-width: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .path-element {
+            flex-grow: 1;
+        }
+
+        .text-input-container>textarea {
+            margin-bottom: -0.2rem;
+        }
+
+        .button-style {
+            color: white;
+            border: black solid 0.1rem;
+            border-radius: 0.3rem;
+            background-color: green;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+        }
+
+        .text-input-container {
+            padding: 0.2rem;
+            background: #fafafa;
+        }
+
+        .text-input {
+            background: transparent;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            resize: vertical;
+        }
+
+        .alternative-radio {
+            display: block;
+            padding: 0.3rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            border: transparent solid 0.1rem;
+            border-radius: 0.3rem;
+        }
+
+        .radio-selected {
+            border-color: black;
+        }
+
+        .radio-input {
+            display: none;
+        }
+
+        .radio-container {
+            display: flex;
+            justify-content: space-around;
+            padding-left: 6rem;
+            padding-right: 6rem;
+        }
+
+        .input-instruction-text {
+            margin: 0.3rem;
+        }
+
+        .center-row {
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            margin: 1rem;
+            padding-bottom: 3rem;
+            padding-top: 5rem;
+        }
+
+        .experience-container {
+            flex-grow: 1;
+            margin: 1rem;
+            background-color: #fafafa;
+            min-width: 15rem;
+            max-width: 40rem;
+            box-shadow: 0.2rem 0.2rem 0.7rem #b0b0b0;
+        }
+
+        .short-info-container {
+            color: black;
+            padding: 0.5rem;
+        }
+
+        .first-job-display {
+            color: white;
+            background: linear-gradient(to right, transparent, #00B568, transparent);
+        }
+
+        .short-info-horizontal {
+            display: flex;
+            justify-content: center;
+        }
+
+        .short-info {
+            width: 50%;
+        }
+
+        .bullet-container {
+            max-width: 25rem;
+            margin: 0 auto;
+        }
+
+        .bullet-row {
+            display: flex;
+            padding: 0.5rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .bullet-row:hover {
+            background: #f5f5f5;
+        }
+
+        .bullet-title-description-container {
+            padding-left: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .bullet-title {
+            font-weight: bold;
+        }
+
+        .bullet-index {
+            min-width: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: lightgray solid 0.2rem;
+        }
+
+        .short-info-left {
+            text-align: right;
+            border-right: solid lightgray 0.1rem;
+            padding-right: 0.5rem;
+        }
+
+        .short-info-right {
+            text-align: left;
+            border-left: solid lightgray 0.1rem;
+            padding-left: 0.5rem;
+        }
+
+        .description-container {
+            padding: 0.5rem;
+            max-width: 25rem;
+            margin: 0 auto;
+        }
+
+        .button-panel {
+            padding: 0.5rem;
+            max-width: 25rem;
+            margin: 0 auto;
+        }
+
+        .horizontal-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button {
+            width: 10rem;
+            padding: 0.3rem;
+            color: white;
+            border: black solid 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+        }
+
+
+        .upvote-button {
+            width: 10rem;
+            background-color: #25DA8C;
+        }
+
+        .downvote-button {
+            width: 10rem;
+            background-color: #ffb366;
+            margin-right: 0.3rem;
+            margin-left: 0.3rem;
+        }
+
+        .flag-button {
+            width: 10rem;
+            background-color: #8080ff;
+        }
+
+        .translate-button {
+            width: 10rem;
+            background-color: #00B568;
+            margin-top: 1rem;
+            display: block;
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 40rem) {
+            .navigation-bar {
+                flex-direction: column;
+            }
+        }
+
+
+        .login-base {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            min-height: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .login-outline {
+            padding: 1rem;
+            margin-top: 5rem;
+            width: 15rem;
+            background-color: #fafafa;
+            box-shadow: 0.2rem 0.2rem 0.7rem #202020;
+        }
+
+        .login-text {
+            text-align: center;
+        }
+
+        .login-input-container {
+            margin: 1rem;
+        }
+
+        .login-input {
+            text-align: center;
+        }
+
+        .login-submit-button {
+            display: block;
+            margin: 0 auto;
+            background-color: #25DA8C;
+        }
+
+        .login-hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-base login-hidden" onclick="openLogin(false);">
+        <div class="login-outline">
+            <div class="login-text">Login</div>
+            <form action="/login" method="post">
+                <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input>
+                </div>
+                <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input>
+                </div>
+                <input class="login-submit-button button" type="submit"></input>
+            </form>
+        </div>
+    </div>
+    <div class="paper-center">
+        <div class="navigation-bar">
+            <div class="nav nav-logo"></div>
+            <div class="nav button nav-search"><input class="nav nav-searh-input text-input" type="text" name="search" placeholder="Search"></input>
+            </div>
+            <button class="nav button nav-new-guide">Your guide</button>
+            <button class="nav button nav-account">Logout</button>
+            <button class="nav button nav-login" onclick="openLogin(true);">Login</button>
+        </div>
+    </div>
+    <div class="paper-center">
         <div class="experience-container">
             <div class="placeholder-container">
-                <div class="placeholder"><%= title%></div>
+                <div class="placeholder">
+                    <%= title%>
+                </div>
             </div>
             <div class="short-info-container">
                 <div class="short-info-horizontal">
                     <div class="short-info">
-                        <div class="short-info-left"><%= firstJobLabel%></div>
-                        <div class="short-info-left"><%= educationLabel%></div>
-                        <div class="short-info-left"><%= jobLabel%></div>
+                        <div class="short-info-left">
+                            <%= firstJobLabel%>
+                        </div>
+                        <div class="short-info-left">
+                            <%= educationLabel%>
+                        </div>
+                        <div class="short-info-left">
+                            <%= jobLabel%>
+                        </div>
                     </div>
                     <div class="short-info">
                         <% if (isFirstJob) { %>
-                            <div class="short-info-right"><%= yes%></div>
-                        <% } else { %>
-                            <div class="short-info-right"><%= no%></div>
-                        <% } %>
-                        <div class="short-info-right"><%= education%></div>
-                        <div class="short-info-right"><%= job%></div>
+                            <div class="short-info-right">
+                                <%= yes%>
+                            </div>
+                            <% } else { %>
+                                <div class="short-info-right">
+                                    <%= no%>
+                                </div>
+                                <% } %>
+                                    <div class="short-info-right">
+                                        <%= education%>
+                                    </div>
+                                    <div class="short-info-right">
+                                        <%= job%>
+                                    </div>
                     </div>
                 </div>
             </div>
             <div class="bullet-container">
-                    <% for (var i = 0; i < bullets.length; i++) { %>
-                <div class="bullet-row">
-                    <div class="bullet-index"><%= bullets[i].order + 1%></div>
-                    <div class="bullet-title-description-container">
-                        <div class="bullet-title"><%= bullets[i].title%></div>
-                        <div class="bullet-description"><%= bullets[i].description%></div>
+                <% for (var i = 0; i < bullets.length; i++) { %>
+                    <div class="bullet-row">
+                        <div class="bullet-index">
+                            <%= bullets[i].order + 1%>
+                        </div>
+                        <div class="bullet-title-description-container">
+                            <div class="bullet-title">
+                                <%= bullets[i].title%>
+                            </div>
+                            <div class="bullet-description">
+                                <%= bullets[i].description%>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <% } %>
+                    <% } %>
             </div>
 
             <div class="description-container">
-                <div class="description-text"><%= description%></div>
+                <div class="description-text">
+                    <%= description%>
+                </div>
             </div>
             <div class="button-panel">
                 <div class="horizontal-buttons">
@@ -110,8 +481,20 @@
             </div>
             <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
         </div>
-        <script>
+    </div>
+    <script>
+        document.getElementsByClassName("login-outline")[0].addEventListener("click", function(event) {
+            event.stopPropagation();
+        });
 
-        </script>
-    </body>
+        function openLogin(shouldOpen) {
+            if (shouldOpen) {
+                document.getElementsByClassName("login-base")[0].classList.remove("login-hidden");
+            } else {
+                document.getElementsByClassName("login-base")[0].classList.add("login-hidden");
+            }
+        }
+    </script>
+</body>
+
 </html>
