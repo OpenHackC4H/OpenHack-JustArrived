@@ -12,21 +12,6 @@ module.exports = function(passport) {
 
     router.get('/', function(req, res) {
             res.render("guide-template", req.langObj);
-//        var filepath = path.join(__dirname, '../lang/' + lang + '.json');
-        //fs.readFile(filepath, function(err , data){
-            //if(err){
-                //console.log("Language file for language " + lang + " not found! Falling back to english.");
-                //filepath = path.join(__dirname, '../lang/en.json');
-                //fs.readFile(filepath, function(err, data ){
-                    //json = JSON.parse(data);
-                    //res.render("guide-template", json);
-                //});
-            //}
-            //else{
-                //json = JSON.parse(data);
-                //res.render("guide-template", json);
-            //}
-        //});
     });
 
     router.post('/upload', function(req, res) {
