@@ -37,7 +37,7 @@
     <body>
         <div class="container">
             <div class="guide-header"><%= fillOutYourGuide%></div>
-            <form action="upload" method="POST">
+            <form action="create-guide/upload" method="POST">
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= wasThisYourFirstJobInSweden%></div>
                     <div class="center-row radio-container">
@@ -48,12 +48,12 @@
 
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= whatKindOfJobIsIt%></div>
-                    <div class="text-input-container"><input class="text-input" type="text" name="jobtype"></input></div>
+                    <div class="text-input-container"><input class="text-input" type="text" name="job-type"></input></div>
                 </div>
 
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= whatEducationDidYouHave%></div>
-                    <div class="text-input-container"><input class="text-input" type="text" name="previouseducation"></input></div>
+                    <div class="text-input-container"><input class="text-input" type="text" name="previous-education"></input></div>
                 </div>
 
                 <div class="guide-row">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= descriptionPreferablyShort%></div>
-                    <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guidedescription"></textarea>
+                    <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guide-description"></textarea>
                 </div>
                 <div class="guide-row">
                     <div class="center-row">

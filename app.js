@@ -37,8 +37,38 @@ app.use(function(req, res, next) {
 
 require('./passport/init')(passport);
 
+function authMiddleware(req, res, next) {
+    if (req.isAuthenticated()) {return next(); }
+    res.status(401).redirect('/');
+}
+
 //Defining routes
-app.use('/guide', require('./routes/guide')(passport));
+app.use('/', require('./routes/index'));
+app.use('/create-guide', authMiddleware, require('./routes/guide')(passport));
+
+app.post('/login', function(req, res, next) {
+    passport.authenticate('login', function(err, account) {
+        if (err) {
+            console.log("Login failed!");
+            console.log(err);
+        } else {
+            console.log("Account " + account + " logged in.");
+        }
+        res.redirect('/');
+    })(req, res, next);
+});
+
+app.post('/signup', function(req, res, next) {
+    passport.authenticate('signup', function(err, account) {
+        if (err) {
+            console.log('Signup failed!');
+            console.log(err);
+        } else {
+            console.log("Account" + account + " signed up.");
+        }
+        res.redirect('/');
+    })
+})
 
 app.listen(port, function() {
     console.log("Hello World listening on port " + port + "!");
