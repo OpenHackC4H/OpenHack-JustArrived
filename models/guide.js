@@ -1,13 +1,17 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var BulletSchema = new Schema({ title: String, description: String, order: Number });
+var BulletSchema = new Schema({ title: { type: String, required: true },
+                                description: { type: String, required: true },
+                                order: { type: Number, required: true }});
 var GuideSchema = new Schema({
-    firstJob: Boolean,
-    job: String,
-    education: String,
-    bullets: [BulletSchema],
+    firstJob: { type: Boolean, required: true },
+    job: { type: String, required: true },
+    education: { type: String, required: true },
+    bullets: { type: [BulletSchema], required: true },
     description: String,
-    language: String
+    language: { type: String, required: true },
+    author: { type: Schema.Types.ObjectId, required: true }
 })
 
 module.exports = mongoose.model('Guide', GuideSchema);

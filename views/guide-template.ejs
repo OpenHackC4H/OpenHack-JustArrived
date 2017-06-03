@@ -41,19 +41,19 @@
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= wasThisYourFirstJobInSweden%></div>
                     <div class="center-row radio-container">
-                        <label class="alternative-radio"><%= yes%><input class="radio-input" type="radio" name="firstjob" value="yes" onchange="radioChanged(event);"></input></label>
-                        <label class="alternative-radio"><%= no%><input class="radio-input" type="radio" name="firstjob" value="no" onchange="radioChanged(event);"></input></label>
+                        <label class="alternative-radio"><%= yes%><input class="radio-input" type="radio" name="firstJob" value="yes" onchange="radioChanged(event);"></input></label>
+                        <label class="alternative-radio"><%= no%><input class="radio-input" type="radio" name="firstJob" value="no" onchange="radioChanged(event);"></input></label>
                     </div>
                 </div>
 
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= whatKindOfJobIsIt%></div>
-                    <div class="text-input-container"><input class="text-input" type="text" name="job-type"></input></div>
+                    <div class="text-input-container"><input class="text-input" type="text" name="jobType"></input></div>
                 </div>
 
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= whatEducationDidYouHave%></div>
-                    <div class="text-input-container"><input class="text-input" type="text" name="previous-education"></input></div>
+                    <div class="text-input-container"><input class="text-input" type="text" name="previousEducation"></input></div>
                 </div>
 
                 <div class="guide-row">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= descriptionPreferablyShort%></div>
-                    <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guidedescription"></textarea></div>
+                    <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guideDescription"></textarea></div>
                 </div>
                 <input type="text" id="hiddenNumberBullets" name="numberBullets" style="display: none">
                 <div class="guide-row">
@@ -131,8 +131,8 @@
                 var rows = document.getElementsByClassName("path-step-container")[0].children;
                 for(var i = 0; i < rows.length; i++) {
                     rows[i].children[0].innerHTML = i + 1;
-                    rows[i].children[1].children[0].children[0].name="bullet-title-" + i;
-                    rows[i].children[1].children[2].children[0].name="bullet-descr-" + i;
+                    rows[i].children[1].children[0].children[0].name="bulletTitle" + i;
+                    rows[i].children[1].children[2].children[0].name="bulletDescr" + i;
                 }
                 document.getElementById("hiddenNumberBullets").value = rows.length;
             }
