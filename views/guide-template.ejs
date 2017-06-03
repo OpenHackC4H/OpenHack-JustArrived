@@ -39,6 +39,11 @@
             <div class="guide-header"><%= fillOutYourGuide%></div>
             <form action="create-guide/upload" method="POST">
                 <div class="guide-row">
+                    <div class="center-row input-instruction-text"><%= titleLabel%></div>
+                    <div class="text-input-container"><input class="text-input" type="text" name="title"></input></div>
+                </div>
+
+                <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= wasThisYourFirstJobInSweden%></div>
                     <div class="center-row radio-container">
                         <label class="alternative-radio"><%= yes%><input class="radio-input" type="radio" name="firstJob" value="yes" onchange="radioChanged(event);"></input></label>

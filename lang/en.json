@@ -9,6 +9,14 @@
     "path":"Path",
     "descriptionPreferablyShort":"A preferably short description",
     "whatOccupationsHaveYouHad":"What occupations have you had previously?",
-    "submitButtonText": "Submit"
+    "submitButtonText": "Submit",
+    "firstJobLabel": "First Job",
+    "educationLabel": "Education",
+    "jobLabel": "Job",
+    "voteUpLabel": "Vote Up",
+    "voteDownLabel": "Vote Down",
+    "flagLabel": "Flag",
+    "translateLabel": "Translate",
+    "titleLabel": "Title"
 }
 

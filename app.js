@@ -53,7 +53,8 @@ function authMiddleware(req, res, next) {
 }
 
 //Defining routes
-app.use('/create-guide', authMiddleware, require('./routes/guide')(passport));
+app.use('/guide', require('./routes/guide'));
+app.use('/create-guide', authMiddleware, require('./routes/create-guide'));
 
 app.post('/login', function(req, res, next) {
     passport.authenticate('login', function(err, user) {

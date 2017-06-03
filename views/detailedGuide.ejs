@@ -55,64 +55,58 @@
             .button-panel{ padding: 0.5rem; max-width: 25rem; margin: 0 auto; }
             .horizontal-buttons{ display: flex; justify-content: space-between; }
             .button{ width: 10rem; padding: 0.3rem; color: white; border: black solid 0; background-color: gray; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; }
-            
+
             .upvote-button{ background-color: #25DA8C; }
             .downvote-button{ background-color: #ffb366; margin-right: 0.3rem; margin-left: 0.3rem; }
             .flag-button{ background-color: #8080ff; }
             .translate-button{ background-color: #00B568; margin-top: 1rem; display: block; width: 100%; }
-
-        
         </style>
     </head>
     <body>
         <div class="experience-container">
             <div class="placeholder-container">
-                <div class="placeholder">placeholder</div>
+                <div class="placeholder"><%= title%></div>
             </div>
             <div class="short-info-container">
-                <!--<%if(isFirstJob) {%>
-                    <div class="center-row first-job-display">First job</div>
-                <% }%>-->
                 <div class="short-info-horizontal">
                     <div class="short-info">
-                        <div class="short-info-left">First job</div>
-                        <div class="short-info-left">Education</div>
-                        <div class="short-info-left">Job branch</div>
+                        <div class="short-info-left"><%= firstJobLabel%></div>
+                        <div class="short-info-left"><%= educationLabel%></div>
+                        <div class="short-info-left"><%= jobLabel%></div>
                     </div>
                     <div class="short-info">
-                        <div class="short-info-right">Yes</div>
-                        <div class="short-info-right">Computer Science</div>
-                        <div class="short-info-right">Programming</div>
+                        <% if (isFirstJob) { %>
+                            <div class="short-info-right"><%= yes%></div>
+                        <% } else { %>
+                            <div class="short-info-right"><%= no%></div>
+                        <% } %>
+                        <div class="short-info-right"><%= education%></div>
+                        <div class="short-info-right"><%= job%></div>
                     </div>
                 </div>
             </div>
             <div class="bullet-container">
+                    <% for (var i = 0; i < bullets.length; i++) { %>
                 <div class="bullet-row">
-                    <div class="bullet-index">1</div>
+                    <div class="bullet-index"><%= bullets[i].order + 1%></div>
                     <div class="bullet-title-description-container">
-                        <div class="bullet-title">CV</div>
-                        <div class="bullet-description">Jag skrev någonting på ett papper sdfklgjhsdf dlskfgj sdflkghsdfg dsfgkhsdf </div>
+                        <div class="bullet-title"><%= bullets[i].title%></div>
+                        <div class="bullet-description"><%= bullets[i].description%></div>
                     </div>
                 </div>
-                <div class="bullet-row">
-                    <div class="bullet-index">2</div>
-                    <div class="bullet-title-description-container">
-                        <div class="bullet-title">Arbetsförmedlingen</div>
-                        <div class="bullet-description">Jag gick till arbetsförmedlingen sdfgklhsdflkgh sdflg ksdhfglkdsf glksdfg</div>
-                    </div>
-                </div>
+                <% } %>
             </div>
 
             <div class="description-container">
-                <div class="description-text">Här har vi en fantastik beskrivning av hur jag gick till arbetsförmedlingen med mitt CV</div>
+                <div class="description-text"><%= description%></div>
             </div>
             <div class="button-panel">
                 <div class="horizontal-buttons">
-                    <button class="button upvote-button">Vote Up</button>
-                    <button class="button downvote-button">Vote Down</button>
-                    <button class="button flag-button">Flag</button>
+                    <button class="button upvote-button"><%= voteUpLabel%></button>
+                    <button class="button downvote-button"><%= voteDownLabel%></button>
+                    <button class="button flag-button"><%= flagLabel%></button>
                 </div>
-                <button class="button translate-button">Translate</button>
+                <button class="button translate-button"><%= translateLabel%></button>
             </div>
             <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
         </div>
