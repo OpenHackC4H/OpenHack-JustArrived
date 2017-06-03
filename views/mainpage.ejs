@@ -6,80 +6,125 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Perpetual Projects</title>
+        <link rel="stylesheet" type="text/css" href="../public/css/common.css">
         <style>
-            body{ margin: 0; }
-            .container{ max-width: 70rem; }
-
-            .navigation-bar{ display: flex; }
-            .nav-search{ flex-grow: 1; min-width: 4rem; }
-            .nav{ font-size: 1.5rem; white-space: nowrap; }
-            @media only screen and (max-width: 40rem) {
-                .navigation-bar{ flex-direction: column; }
-            }
-            .nav-logo{ color: #00B568; }
-
             .color-primary-0 { color: #00B568 }
             .color-primary-1 { color: #25DA8C }
             .color-primary-2 { color: #00DE7F }
             .color-primary-3 { color: #009052 }
             .color-primary-4 { color: #006F3F }
 
-            .text-input{ background: transparent; font-family: Arial, Helvetica, sans-serif; font-size: inherit; width: 100%; padding: 0; border: 0; margin: 0; resize: vertical; }
-            .main-header{ text-align: center; padding: 1rem; }
-            .short-guide-container{ margin: 0; }
-            .short-guide-row{ margin: 0.5rem; padding: 0.5rem; background-color: silver; }
-            .first-job{ background-color: greenyellow; }
-            .short-guide-profession-box{  }
-            .short-guide-path-box{  }
-            .short-guide-main{ display: flex; justify-content: space-between; background-color: orange; }
-            .button{ padding: 0.3rem; color: white; border: black solid 0; background-color: gray; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; }
+            
 
-
-            .footer{ text-align: center; }
         </style>
     </head>
     <body>
-        <div class="container">
-            <div class="navigation-bar">
-                
+        <div class="login-base login-hidden" onclick="openLogin(false);">
+            <div class="login-outline">
+                <div class="login-text">Login</div>
+                <form action="/login" method="post">
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input></div>
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input></div>
+                    <input class="login-submit-button button" type="submit"></input>
+                </form>
+                <div class="login-create" onclick="openAccountcreation(true);">Create account</div>
             </div>
-            <div class="main-header"><%= experiences%></div>
-            <div class="short-guide-container">
-                <div class="short-guide-row">
-                    <div class="first-job"><%= firstJob!%></div>
-                    <div class="short-guide-main">
-                        <div class="short-guide-profession-box">
-                            <div><%= computerScience%></div>
-                            <div><%= carpenter%></div>
+        </div>
+        <div class="login-base login-create-base login-hidden" onclick="openAccountcreation(false);">
+            <div class="login-outline">
+                <div class="login-text">Create account</div>
+                <form action="/login" method="post">
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input></div>
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="email" type="email" placeholder="Email"></input></div>
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input></div>
+                    <div class="text-input-container login-input-container"><input class="login-input text-input" name="confirmpassword" type="password" placeholder="Confirm password"></input></div>
+                    <input class="login-submit-button button" type="submit" value="Create account"></input>
+                </form>
+            </div>
+        </div>
+         <div class="paper-center">
+            <div class="navigation-bar">
+                <div class="nav nav-logo"></div>
+                <div class="nav button nav-search"><input class="nav nav-searh-input text-input" type="text" name="search" placeholder="Search"></input></div>
+                <button class="nav button nav-new-guide">Your guide</button>
+                <button class="nav button nav-account">Logout</button>
+                <button class="nav button nav-login" onclick="openLogin(true);">Login</button>
+            </div>
+        </div>
+        <div class="paper-center">
+            <div class="main-paper">
+                <div class="page-text-width">
+                    <div class="green-header">Guides</div>
+
+                    <div class="guide-row">
+                        <div class="bannerText font-medium">Title of the guide</div>
+                        <div class="short-guide-facts-container">
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">First job</div>
+                                <div class="short-fact-text">Yes</div>
+                            </div>
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">Education</div>
+                                <div class="short-fact-text">Computer science</div>
+                            </div>
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">previous ocupation</div>
+                                <div class="short-fact-text">Carpenter</div>
+                            </div>
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">Job type</div>
+                                <div class="short-fact-text">Programmer</div>
+                            </div>
                         </div>
-                        <div class="short-guide-path-box"><!-- Very flexible if displayed or not -->
-                            <%= theAmazingPath%>
-                        </div>
+                        <div class="bannerText font-medium">stepbystep > CV > Arbetsförmedlingen</div>
                     </div>
-                </div>
-                <div class="short-guide-row">
-                    <div class="first-job"><%= firstJob!%></div>
-                    <div class="short-guide-main">
-                        <div class="short-guide-profession-box">
-                            <div><%= computerScience%></div>
-                            <div>Carpenter</div>
+
+                     <div class="guide-row">
+                        <div class="bannerText font-medium">Title of the guide</div>
+                        <div class="short-guide-facts-container">
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">First job</div>
+                                <div class="short-fact-text">Yes</div>
+                            </div>
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">Education</div>
+                                <div class="short-fact-text">Computer science</div>
+                            </div>
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">previous ocupation</div>
+                                <div class="short-fact-text">Carpenter</div>
+                            </div>
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">Job type</div>
+                                <div class="short-fact-text">Programmer</div>
+                            </div>
                         </div>
-                        <div class="short-guide-path-box"><!-- Very flexible if displayed or not -->
-                            <%= theAmazingPath%>
-                        </div>
+                        <div class="bannerText font-medium">stepbystep > CV > Arbetsförmedlingen</div>
                     </div>
-                </div>
-                <div class="short-guide-row">
-                    <div class="first-job"><%= firstJob!%></div>
-                    <div class="short-guide-main">
-                        <div class="short-guide-profession-box">
-                            <div><%= computerScience%></div>
-                            <div><%= carpenter%></div>
+
+                    <div class="guide-row">
+                        <div class="bannerText font-medium">Title of the guide</div>
+                        <div class="short-guide-facts-container">
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">First job</div>
+                                <div class="short-fact-text">Yes</div>
+                            </div>
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">Education</div>
+                                <div class="short-fact-text">Computer science</div>
+                            </div>
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">previous ocupation</div>
+                                <div class="short-fact-text">Carpenter</div>
+                            </div>
+                            <div class="short-guide-facts">
+                                <div class="short-fact-header">Job type</div>
+                                <div class="short-fact-text">Programmer</div>
+                            </div>
                         </div>
-                        <div class="short-guide-path-box"><!-- Very flexible if displayed or not -->
-                            <%= theAmazingPath%>
-                        </div>
+                        <div class="bannerText font-medium">stepbystep > CV > Arbetsförmedlingen</div>
                     </div>
+
                 </div>
             </div>
         </div>
