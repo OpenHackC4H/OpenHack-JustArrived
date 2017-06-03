@@ -3,7 +3,8 @@ var MongoClient = require('mongodb').MongoClient,
     express = require('express'),
     passport = require('passport'),
     dbConfig = require('./database'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    getLang = require('./util/getLang');
 
 mongoose.connect(dbConfig.url);
 
@@ -34,6 +35,7 @@ app.use(function(req, res, next) {
 
     next();
 });
+app.use(getLang);
 
 require('./passport/init')(passport);
 
