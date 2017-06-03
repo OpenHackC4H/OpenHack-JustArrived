@@ -48,30 +48,21 @@
 
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= whatKindOfJobIsIt?%></div>
-                    <div class="text-input-container"><input class="text-input" type="text"></input></div>
+                    <div class="text-input-container"><input class="text-input" type="text" name="jobtype"></input></div>
                 </div>
 
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= whatEducationDidYouHave?%></div>
-                    <div class="text-input-container"><input class="text-input" type="text"></input></div>
+                    <div class="text-input-container"><input class="text-input" type="text" name="previouseducation"></input></div>
                 </div>
 
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= howIdidIt%></div>
-                    <div class="path-step-container">
-                        <!--<div class="path-step">
-                            <div class="path-index">1.</div>
-                            <div class="path-element">
-                                <div class="text-input-container"><input class="path-header text-input" type="text" oninput="handlePathChange();"></input></div>
-                                <div style="height: 0.1rem;"></div>
-                                <div class="text-input-container"><textarea class="path-header text-input" rows="4" oninput="handlePathChange();"></textarea></div>
-                            </div>
-                        </div>-->
-                    </div>
+                    <div class="path-step-container"></div>
                 </div>
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= descriptionPreferablyShort%></div>
-                    <div class="text-input-container"><textarea class="path-header text-input" rows="10"></textarea>
+                    <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guidedescription"></textarea>
                 </div>
                 <div class="guide-row">
                     <div class="center-row">
@@ -92,8 +83,6 @@
                 pathStep.className = "path-step";
                 var pathIndex = document.createElement("div");
                 pathIndex.className = "path-index";
-                var pathIndexText = document.createTextNode(document.getElementsByClassName("path-step-container")[0].children.length);
-                pathIndex.appendChild(pathIndexText);
                 var pathElement = document.createElement("div");
                 pathElement.className = "path-element";
 
@@ -141,6 +130,8 @@
                 var rows = document.getElementsByClassName("path-step-container")[0].children;
                 for(var i = 0; i < rows.length; i++) {
                     rows[i].children[0].innerHTML = i + 1;
+                    rows[i].children[1].children[0].children[0].name="bullet-title-" + i;
+                    rows[i].children[1].children[2].children[0].name="bullet-descr-" + i;
                 }
             }
             function handlePathBlur(event) {
@@ -150,11 +141,12 @@
                     if(row != document.getElementsByClassName("path-step-container")[0].lastElementChild)
                     //delete it
                     row.parentElement.removeChild(row);
+                    rewriteIndexes();
                 }
                 if(!isEmpty(document.getElementsByClassName("path-step-container")[0].lastElementChild)) {
                     addNewPathStep();
                 }
-                rewriteIndexes();
+                
             }
             function isEmpty(step) {
                 if((step.children[1].children[0].children[0].value != "") || (step.children[1].children[2].children[0].value != "")) {
