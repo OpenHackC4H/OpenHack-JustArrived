@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -62,8 +62,9 @@
                 </div>
                 <div class="guide-row">
                     <div class="center-row input-instruction-text"><%= descriptionPreferablyShort%></div>
-                    <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guide-description"></textarea>
+                    <div class="text-input-container"><textarea class="path-header text-input" rows="10" name="guidedescription"></textarea></div>
                 </div>
+                <input type="text" id="hiddenNumberBullets" name="numberBullets" style="display: none">
                 <div class="guide-row">
                     <div class="center-row">
                         <input class="button-style" type="submit" value="<%= submitButtonText%>"></input>
@@ -133,6 +134,7 @@
                     rows[i].children[1].children[0].children[0].name="bullet-title-" + i;
                     rows[i].children[1].children[2].children[0].name="bullet-descr-" + i;
                 }
+                document.getElementById("hiddenNumberBullets").value = rows.length;
             }
             function handlePathBlur(event) {
                 var row = event.target.parentElement.parentElement.parentElement;

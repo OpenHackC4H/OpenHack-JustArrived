@@ -9,6 +9,15 @@
         <style>
             body{ margin: 0; }
             .container{ max-width: 70rem; background-color: cyan; }
+
+            .navigation-bar{ display: flex; }
+            .nav-search{ flex-grow: 1; min-width: 4rem; }
+            .nav{ font-size: 1.5rem; white-space: nowrap; }
+            @media only screen and (max-width: 40rem) {
+                .navigation-bar{ flex-direction: column; }
+            }
+
+            .text-input{ background: transparent; font-family: Arial, Helvetica, sans-serif; font-size: inherit; width: 100%; padding: 0; border: 0; margin: 0; resize: vertical; }
             .main-header{ text-align: center; padding: 1rem; }
             .short-guide-container{ margin: 0; }
             .short-guide-row{ margin: 0.5rem; padding: 0.5rem; background-color: silver; }
@@ -17,11 +26,20 @@
             .short-guide-path-box{  }
             .short-guide-main{ display: flex; justify-content: space-between; background-color: orange; }
 
+
+
             .footer{ text-align: center; }
         </style>
     </head>
     <body>
         <div class="container">
+            <div class="navigation-bar">
+                <div class="nav nav-logo">Perpetual Projects</div>
+                <div class="nav nav-search"><input class="nav text-input" type="text" name="search" placeholder="Search"></input></div>
+                <button class="nav nav-new-guide">create your guide</button>
+                <button class="nav nav-account">account</button>
+                <button class="nav nav-login">Login</button>
+            </div>
             <div class="main-header"><%= experiences%></div>
             <div class="short-guide-container">
                 <div class="short-guide-row">
