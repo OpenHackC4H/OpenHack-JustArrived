@@ -19,7 +19,7 @@ module.exports = function(passport) {
                     console.log("goddag " + err);
                     console.log("goddag " + data);
                     json = JSON.parse(data);
-                    res.render("guide-template", json);
+                    res.render("mainpage", json);
                 });
             }
             else{
