@@ -82,15 +82,17 @@
         </div>
         <div class="footer">Powered <span style="font-size: 0.8rem;">by</span> Perpetual Projects</div>
         <script>
-            var lastStep = 0;
+            var maxSteps = 15;
             addNewPathStep();
             function addNewPathStep() {
-                lastStep++;
+                if(document.getElementsByClassName("path-step-container")[0].children.length == maxSteps) {
+                    return;
+                }
                 var pathStep = document.createElement("div");
                 pathStep.className = "path-step";
                 var pathIndex = document.createElement("div");
                 pathIndex.className = "path-index";
-                var pathIndexText = document.createTextNode(lastStep);
+                var pathIndexText = document.createTextNode(document.getElementsByClassName("path-step-container")[0].children.length);
                 pathIndex.appendChild(pathIndexText);
                 var pathElement = document.createElement("div");
                 pathElement.className = "path-element";
@@ -127,6 +129,7 @@
                 var container = document.getElementsByClassName("path-step-container")[0];
 
                 container.appendChild(pathStep);
+                rewriteIndexes();
             }
             function handlePathChange() {
                 var lastStep = document.getElementsByClassName("path-step-container")[0].lastElementChild;
@@ -134,18 +137,24 @@
                     addNewPathStep();
                 }
             }
+            function rewriteIndexes() {
+                var rows = document.getElementsByClassName("path-step-container")[0].children;
+                for(var i = 0; i < rows.length; i++) {
+                    rows[i].children[0].innerHTML = i + 1;
+                }
+            }
             function handlePathBlur(event) {
                 var row = event.target.parentElement.parentElement.parentElement;
-                var rows = row.parentElement.children;
+                
                 if(isEmpty(row)) {
                     if(row != document.getElementsByClassName("path-step-container")[0].lastElementChild)
                     //delete it
                     row.parentElement.removeChild(row);
-                    lastStep--;
                 }
-                for(var i = 0; i < rows.length; i++) {
-                    rows[i].children[0].innerHTML = i + 1;
+                if(!isEmpty(document.getElementsByClassName("path-step-container")[0].lastElementChild)) {
+                    addNewPathStep();
                 }
+                rewriteIndexes();
             }
             function isEmpty(step) {
                 if((step.children[1].children[0].children[0].value != "") || (step.children[1].children[2].children[0].value != "")) {
