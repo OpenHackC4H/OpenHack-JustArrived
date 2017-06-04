@@ -29,6 +29,7 @@ router.post('/upload', function(req, res) {
         guide.job = validator.trim(req.body.jobType);
         guide.education = validator.trim(req.body.previousEducation);
         guide.prevOccupation = validator.trim(req.body.previousOccupation);
+        guide.description = validator.trim(req.body.guideDescription);
         guide.upvotes = 0;
 
         var bullets = [];
