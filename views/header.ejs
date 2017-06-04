@@ -1,42 +1,42 @@
 <div class="login-base login-hidden" onclick="openLogin(false);">
     <div class="login-outline">
-        <div class="login-text">Login</div>
+        <div class="login-text"><%= logInLabel%></div>
         <form action="/login" method="post">
-            <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="<%= usernameLabel%>"></input>
             </div>
-            <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="<%= passwordLabel%>"></input>
             </div>
-            <input class="login-submit-button button" type="submit"></input>
+            <input class="login-submit-button button" type="submit" value="<%= logInLabel%>"></input>
         </form>
-        <div class="login-create" onclick="openAccountcreation(true);">Create account</div>
+        <div class="login-create" onclick="openAccountcreation(true);"><%= createAccountLabel%></div>
     </div>
 </div>
 <div class="login-base login-create-base login-hidden" onclick="openAccountcreation(false);">
     <div class="login-outline">
-        <div class="login-text">Create account</div>
+        <div class="login-text"><%= createAccountLabel%></div>
         <form action="/signup" method="post">
-            <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="Username"></input>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="username" type="text" placeholder="<%= usernameLabel%>"></input>
             </div>
-            <div class="text-input-container login-input-container"><input class="login-input text-input" name="email" type="email" placeholder="Email"></input>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="email" type="email" placeholder="<%= emailLabel%>"></input>
             </div>
-            <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="Password"></input>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="password" type="password" placeholder="<%= passwordLabel%>"></input>
             </div>
-            <div class="text-input-container login-input-container"><input class="login-input text-input" name="confirmpassword" type="password" placeholder="Confirm password"></input>
+            <div class="text-input-container login-input-container"><input class="login-input text-input" name="confirmpassword" type="password" placeholder="<%= confirmPasswordLabel%>"></input>
             </div>
-            <input class="login-submit-button button" type="submit" value="Create account"></input>
+            <input class="login-submit-button button" type="submit" value="<%= createAccountLabel%>"></input>
         </form>
     </div>
 </div>
 <div class="paper-center">
     <div class="navigation-bar">
-        <a  class="nav-new-guide-link" href="/create-guide"><div class="nav nav-logo"><img style="height: 100%;" src="/res/128x128_logo.png"></img></div></a>
-        <div class="nav button nav-search"><input class="nav nav-searh-input text-input" type="text" name="search" placeholder="Search"></input>
+        <a  class="nav-new-guide-link" href="/"><div class="nav nav-logo"><img style="height: 100%;" src="/res/128x128_logo.png"></img></div></a>
+        <div class="nav button nav-search"><input class="nav nav-searh-input text-input" type="text" name="search" placeholder="<%= search%>"></input>
         </div>
-        <a class="nav-new-guide-link" href="/create-guide"><button class="nav button nav-new-guide">Your guide</button></a>
+        <a class="nav-new-guide-link" href="/create-guide"><button class="nav button nav-new-guide"><%= yourGuideLabel%></button></a>
         <% if (loggedIn) {%>
-            <button class="nav button nav-account">Logout</button>
+            <button class="nav button nav-account"><%= logOutLabel%></button>
             <% } else { %>
-                <button class="nav button nav-login" onclick="openLogin(true);">Login</button>
+                <button class="nav button nav-login" onclick="openLogin(true);"><%= logInLabel%></button>
                 <% } %>
     </div>
 </div>

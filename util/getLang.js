@@ -12,7 +12,26 @@ module.exports = function(req, res, next){
         "path",
         "descriptionPreferablyShort",
         "submitButtonText",
-        "whatOccupationsHaveYouHad"
+        "whatOccupationHaveYouHad",
+        "firstJobLabel",
+        "educationLabel",
+        "jobLabel",
+        "voteUpLabel",
+        "voteDownLabel",
+        "flagLabel",
+        "translateLabel",
+        "titleLabel",
+        "prevOccupationLabel",
+        "logInLabel",
+        "logOutLabel",
+        "createAccountLabel",
+        "usernameLabel",
+        "passwordLabel",
+        "emailLabel",
+        "confirmPasswordLabel",
+        "yourGuideLabel",
+        "search",
+        "guidesLabel"
     ] ;
     var lang = req.cookies.lang;
     var filepath = path.join(__dirname, '../lang/' + lang + '.json');

@@ -18,6 +18,16 @@
     "flagLabel": "Flag",
     "translateLabel": "Translate",
     "titleLabel": "Title",
-    "prevOccupationLabel": "Previous Occupation"
+    "prevOccupationLabel": "Previous Occupation",
+    "logInLabel": "Log In",
+    "logOutLabel": "Log Out",
+    "createAccountLabel": "Create Account",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "emailLabel": "Email",
+    "confirmPasswordLabel": "Confirm Password",
+    "yourGuideLabel": "Your Guide",
+    "search": "Search",
+    "guidesLabel": "Guides"
 }
 
